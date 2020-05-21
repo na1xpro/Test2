@@ -1,5 +1,6 @@
 import telebot
 import config
+import pyowm
 
 from telebot import types
 
@@ -8,30 +9,34 @@ bot = telebot.TeleBot(config.TOKEN)
 
 @bot.message_handler(commands=['start'])
 def welcome(message):
-    sti = open('static/welcome.jfif','rb')
+    sti = open('static/Botpogoda.png','rb')
     bot.send_sticker(message.chat.id, sti)
 
-    # Клавиатура
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("В чем сила?")
-    item2 = types.KeyboardButton("Почему GTA 5 бесплатная?")
-
-    markup.add(item1, item2)
 
     bot.send_message(message.chat.id,
-                     "Добро пожаловать,{0.first_name}!\nЯ - <b>{1.first_name}</b>, бот пиздабол. ".format(
+                     "Добро пожаловать,{0.first_name}!\nЯ - <b>{1.first_name}</b>, бот который предоставляет температуру в данном городе. ".format(
                          message.from_user, bot.get_me()),
                      parse_mode='html', reply_markup=markup)
 
+    city = bot.send_message(message.chat.id,
+                    "Напиши в чат,город в каком ты хочешь узнать о погоде?"
+
+    #Код самой програмы погоды
+
+
+
+
+
+
+
+
 @bot.message_handler(content_types=['text'])
-
-
 def lalala(message):
     if message.chat.type == 'private':
-        if message.text == "В чем сила?!":
-            bot.send_message(message.chat.id, "В душе не ебу!,я же бот.")
-        elif message.text == "Почему GTA 5 бесплатная?":
-            bot.send_message(message.chat.id, "Я ебу,хули они раздают)")
+        if message.text == "Киев":
+            bot.send_message(message.chat.id, ".")
+        elif message.text == "?":
+            bot.send_message(message.chat.id, "т)")
 
     # Начало
 
