@@ -1,0 +1,13 @@
+name = str(input("Hello, your name?"))
+
+name_list = ["Kevin","Ben","Martin","Gordon","Chris",] 
+years_list = ['18,19,20,21,22,23,24,25']
+while True:
+    try:
+        years = str(input(int("Введите Вашу дату рождения:))
+        if 1<years_list  or years_list>26:
+            raise  Exception
+            print("Ok")
+        break
+    except ValueError:
+        print('Note years')
